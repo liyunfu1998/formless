@@ -6,15 +6,15 @@ import { currentUser } from "@clerk/nextjs/server";
 class UserNotFoundError extends Error {}
 
 export async function GetFormStats() {
-  const user = currentUser();
+  const user = await currentUser();
 
   if (!user) {
     throw new UserNotFoundError();
   }
 
-  const stats = prisma.form.aggregate({
+  const stats = await prisma.form.aggregate({
     where: {
-      userId: user.id,
+      userId: user?.id,
     },
     _sum: {
       visits: true,
