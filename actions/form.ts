@@ -8,9 +8,9 @@ class UserNotFoundError extends Error {}
 export async function GetFormStats() {
   const user = await currentUser();
 
-  if (!user) {
-    throw new UserNotFoundError();
-  }
+  // if (!user) {
+  //   throw new UserNotFoundError();
+  // }
 
   const stats = await prisma.form.aggregate({
     where: {
