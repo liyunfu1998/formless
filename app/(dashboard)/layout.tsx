@@ -1,5 +1,6 @@
 import Logo from "@/components/Logo";
 import ThemeSwitcher from "@/components/ThemeSwitcher";
+import { Button } from "@/components/ui/button";
 import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import React, { ReactNode } from "react";
 
@@ -14,7 +15,9 @@ export default function Layout({ children }: { children: ReactNode }) {
             <UserButton />
           </SignedIn>
           <SignedOut>
-            <SignInButton></SignInButton>
+            <SignInButton>
+              <Button variant="ghost">Log In</Button>
+            </SignInButton>
           </SignedOut>
         </div>
       </nav>
