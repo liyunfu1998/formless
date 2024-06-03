@@ -9,7 +9,7 @@ export default function SidebarBtnElement({
 }: {
   formElement: FormElement;
 }) {
-  const { label, icon: Icon } = formElement.designerBtnelement;
+  const { label, icon: Icon } = formElement.designerBtnElement;
   const draggable = useDraggable({
     id: `designer-btn-${formElement.type}`,
     data: {
@@ -39,7 +39,7 @@ export function SidebarBtnElementDragOverlay({
 }: {
   formElement: FormElement;
 }) {
-  const { label, icon: Icon } = formElement.designerBtnelement;
+  const { label, icon: Icon } = formElement.designerBtnElement;
   return (
     <Button
       variant={"outline"}
