@@ -46,5 +46,5 @@ export default function DragOverlayWrapper() {
     }
   }
 
-  return <DragOverlay>{node}</DragOverlay>;
+  return <DragOverlay dropAnimation={null}>{node}</DragOverlay>;
 }
