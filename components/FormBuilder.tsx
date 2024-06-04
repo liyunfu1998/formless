@@ -42,8 +42,10 @@ export default function FormBuilder({ form }: { form: Form }) {
 
   useEffect(() => {
     if (isReady) return;
-    const elements = JSON.parse(form.content);
-    setElements(elements);
+    if (form.content) {
+      const elements = JSON.parse(form.content);
+      setElements(elements);
+    }
     const readyTimeout = setTimeout(() => setIsReady(true), 500);
     return () => clearTimeout(readyTimeout);
   }, [form, setElements, isReady, setSelectedElement]);
