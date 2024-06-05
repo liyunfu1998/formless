@@ -56,7 +56,7 @@ export default async function FormDetailPage({
             title="Total submissions"
             icon={<FaWpforms className="text-yellow-600" />}
             helperText="All time form submissions"
-            value={visits?.toString() || ""}
+            value={submissions?.toString() || ""}
             loading={false}
             className="shadow-md shadow-yellow-600"
           />
@@ -65,7 +65,7 @@ export default async function FormDetailPage({
             title="Submission rate"
             icon={<HiCursorClick className="text-green-600" />}
             helperText="Visits that result in form submission"
-            value={visits?.toString() + "%" || ""}
+            value={submissionRate?.toFixed(2) + "%" || ""}
             loading={false}
             className="shadow-md shadow-green-600"
           />
@@ -74,7 +74,7 @@ export default async function FormDetailPage({
             title="Bounce rate"
             icon={<TbArrowBounce className="text-red-600" />}
             helperText="Visits that leaves without interacting"
-            value={visits?.toString() + "%" || ""}
+            value={bounceRate?.toFixed(2) + "%" || ""}
             loading={false}
             className="shadow-md shadow-red-600"
           />

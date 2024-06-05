@@ -58,6 +58,7 @@ interface StatsCardProps {
 
 function StatsCards(props: StatsCardProps) {
   const { data, loading } = props;
+
   console.log("data", data);
   return (
     <div className="w-full pt-8 gap-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
@@ -74,7 +75,7 @@ function StatsCards(props: StatsCardProps) {
         title="Total submissions"
         icon={<FaWpforms className="text-yellow-600" />}
         helperText="All time form submissions"
-        value={data?.visits?.toString() || ""}
+        value={data?.submissions?.toString() || ""}
         loading={loading}
         className="shadow-md shadow-yellow-600"
       />
@@ -83,7 +84,7 @@ function StatsCards(props: StatsCardProps) {
         title="Submission rate"
         icon={<HiCursorClick className="text-green-600" />}
         helperText="Visits that result in form submission"
-        value={data?.visits?.toString() + "%" || ""}
+        value={data?.submissionRate?.toFixed(2) + "%" || ""}
         loading={loading}
         className="shadow-md shadow-green-600"
       />
@@ -92,7 +93,7 @@ function StatsCards(props: StatsCardProps) {
         title="Bounce rate"
         icon={<TbArrowBounce className="text-red-600" />}
         helperText="Visits that leaves without interacting"
-        value={data?.visits?.toString() + "%" || ""}
+        value={data?.bounceRate?.toFixed(2) + "%" || ""}
         loading={loading}
         className="shadow-md shadow-red-600"
       />
