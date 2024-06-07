@@ -1,8 +1,7 @@
-import React from "react";
+import { cn } from "@/lib/utils";
+import { useDraggable } from "@dnd-kit/core";
 import { FormElement } from "./FormElements";
 import { Button } from "./ui/button";
-import { useDraggable } from "@dnd-kit/core";
-import { cn } from "@/lib/utils";
 
 export default function SidebarBtnElement({
   formElement,
@@ -23,7 +22,7 @@ export default function SidebarBtnElement({
       variant={"outline"}
       className={cn(
         "flex flex-col gap-2 h-[120px] w-[120px] cursor-grab",
-        draggable.isDragging && "ring-2 ring-primary",
+        draggable.isDragging && "ring-2 ring-primary"
       )}
       {...draggable.attributes}
       {...draggable.listeners}

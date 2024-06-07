@@ -1,23 +1,23 @@
 "use client";
 
-import React, { useState } from "react";
-import DesignerSidebar from "./DesignerSidebar";
+import {
+  ElementsType,
+  FormElementInstance,
+  FormElements,
+} from "@/components/FormElements";
+import { idGenerator } from "@/lib/idGenerator";
+import { cn } from "@/lib/utils";
 import {
   DragEndEvent,
   useDndMonitor,
   useDraggable,
   useDroppable,
 } from "@dnd-kit/core";
-import { cn } from "@/lib/utils";
-import {
-  ElementsType,
-  FormElementInstance,
-  FormElements,
-} from "@/components/FormElements";
-import useDesigner from "./hooks/useDesigner";
-import { idGenerator } from "@/lib/idGenerator";
-import { Button } from "./ui/button";
+import { useState } from "react";
 import { BiSolidTrash } from "react-icons/bi";
+import DesignerSidebar from "./DesignerSidebar";
+import useDesigner from "./hooks/useDesigner";
+import { Button } from "./ui/button";
 
 export default function Designer() {
   const {

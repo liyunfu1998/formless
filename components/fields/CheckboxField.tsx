@@ -1,20 +1,22 @@
 "use client";
 
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import { IoMdCheckbox } from "react-icons/io";
+import { z } from "zod";
 import {
   ElementsType,
   FormElement,
   FormElementInstance,
   SubmitFunction,
 } from "../FormElements";
-import { Label } from "../ui/label";
-import { Input } from "../ui/input";
-import { z } from "zod";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useEffect, useState } from "react";
 import useDesigner from "../hooks/useDesigner";
-import { IoMdCheckbox } from "react-icons/io";
+import { Input } from "../ui/input";
+import { Label } from "../ui/label";
 
+import { cn } from "@/lib/utils";
+import { Checkbox } from "../ui/checkbox";
 import {
   Form,
   FormControl,
@@ -25,8 +27,6 @@ import {
   FormMessage,
 } from "../ui/form";
 import { Switch } from "../ui/switch";
-import { cn } from "@/lib/utils";
-import { Checkbox } from "../ui/checkbox";
 
 const type: ElementsType = "CheckboxField";
 
@@ -120,7 +120,7 @@ function FormComponent({
     setError(isInvalid === true);
   }, [isInvalid]);
 
-  const { label, required, placeHolder, helperText } = element.extraAttributes;
+  const { label, required, helperText } = element.extraAttributes;
   const id = `checkbox-${element.id}`;
   return (
     <div className="flex items-top space-x-2">

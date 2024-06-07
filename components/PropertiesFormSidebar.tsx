@@ -1,8 +1,7 @@
-import React from "react";
-import useDesigner from "./hooks/useDesigner";
-import { FormElements } from "./FormElements";
-import { Button } from "./ui/button";
 import { AiOutlineClose } from "react-icons/ai";
+import { FormElements } from "./FormElements";
+import useDesigner from "./hooks/useDesigner";
+import { Button } from "./ui/button";
 import { Separator } from "./ui/separator";
 
 export default function PropertiesFormSidebar() {

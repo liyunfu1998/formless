@@ -1,20 +1,23 @@
 "use client";
 
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import { RxDropdownMenu } from "react-icons/rx";
+import { z } from "zod";
 import {
   ElementsType,
   FormElement,
   FormElementInstance,
   SubmitFunction,
 } from "../FormElements";
-import { Label } from "../ui/label";
-import { Input } from "../ui/input";
-import { z } from "zod";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useEffect, useState } from "react";
 import useDesigner from "../hooks/useDesigner";
-import { RxDropdownMenu } from "react-icons/rx";
+import { Input } from "../ui/input";
+import { Label } from "../ui/label";
 
+import { cn } from "@/lib/utils";
+import { AiOutlineClose, AiOutlinePlus } from "react-icons/ai";
+import { Button } from "../ui/button";
 import {
   Form,
   FormControl,
@@ -24,8 +27,6 @@ import {
   FormLabel,
   FormMessage,
 } from "../ui/form";
-import { Switch } from "../ui/switch";
-import { cn } from "@/lib/utils";
 import {
   Select,
   SelectContent,
@@ -34,8 +35,7 @@ import {
   SelectValue,
 } from "../ui/select";
 import { Separator } from "../ui/separator";
-import { Button } from "../ui/button";
-import { AiOutlineClose, AiOutlinePlus } from "react-icons/ai";
+import { Switch } from "../ui/switch";
 import { toast } from "../ui/use-toast";
 
 const type: ElementsType = "SelectField";
