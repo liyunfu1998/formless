@@ -16,7 +16,9 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { formatDistance } from "date-fns";
+import { format, formatDistance } from "date-fns";
+import { Badge } from "@/components/ui/badge";
+import { Checkbox } from "@/components/ui/checkbox";
 
 export default async function FormDetailPage({
   params,
@@ -121,6 +123,11 @@ async function SubmissionsTable({ id }: { id: number }) {
   formElements.forEach((element) => {
     switch (element.type) {
       case "TextField":
+      case "NumberField":
+      case "TextAreaField":
+      case "DateField":
+      case "SelectField":
+      case "CheckboxField":
         columns.push({
           id: element.id,
           label: element.extraAttributes?.label,
@@ -134,7 +141,6 @@ async function SubmissionsTable({ id }: { id: number }) {
   });
 
   const rows: Row[] = [];
-
   form.FormSubmissions.forEach((submission) => {
     const content = JSON.parse(submission.content);
     rows.push({
@@ -149,8 +155,10 @@ async function SubmissionsTable({ id }: { id: number }) {
         <Table>
           <TableHeader>
             <TableRow>
-              {columns?.map((column) => (
-                <TableHead key={column.id}>{column.label}</TableHead>
+              {columns.map((column) => (
+                <TableHead key={column.id} className="uppercase">
+                  {column.label}
+                </TableHead>
               ))}
               <TableHead className="text-muted-foreground text-right uppercase">
                 Submitted at
@@ -183,6 +191,18 @@ async function SubmissionsTable({ id }: { id: number }) {
 
 function RowCell({ type, value }: { type: ElementsType; value: string }) {
   let node: ReactNode = value;
+
+  switch (type) {
+    case "DateField":
+      if (!value) break;
+      const date = new Date(value);
+      node = <Badge variant={"outline"}>{format(date, "dd/MM/yyyy")}</Badge>;
+      break;
+    case "CheckboxField":
+      const checked = value === "true";
+      node = <Checkbox checked={checked} disabled />;
+      break;
+  }
 
   return <TableCell>{node}</TableCell>;
 }
