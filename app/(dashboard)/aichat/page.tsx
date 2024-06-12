@@ -1,15 +1,16 @@
 "use client";
 
 import { useChat } from "@ai-sdk/react";
+import Markdown from "react-markdown";
 
 export default function AiChat() {
   const { messages, input, handleInputChange, handleSubmit } = useChat();
   return (
-    <div className="flex flex-col w-full max-w-md py-24 mx-auto stretch bg-background">
+    <div className="flex flex-col w-full h-full max-w-xl py-24 mx-auto stretch">
       {messages?.map((m) => (
         <div key={m.id} className="whitespace-pre-wrap">
           {m.role === "user" ? "User：" : "AI："}
-          {m.content}
+          <Markdown>{m.content}</Markdown>
         </div>
       ))}
 
