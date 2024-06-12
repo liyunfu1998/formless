@@ -8,6 +8,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import Link from "next/link";
 import React, { ReactNode } from "react";
 import { BsRobot } from "react-icons/bs";
 
@@ -17,14 +18,11 @@ export default function Layout({ children }: { children: ReactNode }) {
       <nav className="flex justify-between items-center border-b border-border h-[60px] px-4 py-2">
         <Logo />
         <div className="flex gap-4 items-center">
-          <Popover>
-            <PopoverTrigger>
+          <Button variant={"ghost"}>
+            <Link href={"/aichat"}>
               <BsRobot className="w-6 h-6" />
-            </PopoverTrigger>
-            <PopoverContent>
-              <AiChat />
-            </PopoverContent>
-          </Popover>
+            </Link>
+          </Button>
 
           <ThemeSwitcher />
           <SignedIn>
